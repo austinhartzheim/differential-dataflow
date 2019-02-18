@@ -15,14 +15,13 @@ Let's write this computation starting from a collection `edges`, using different
 
     labels
         .iterate(|inner| {
-            let labels = labels.enter(inner.scope());
-            let edges = edges.enter(inner.scope());
+            let labels = labels.enter(&inner.scope());
+            let edges = edges.enter(&inner.scope());
             inner.join(&edges)
-                 .map(|(_src,lbl,dst)| (dst,lbl))
+                 .map(|(_src,(lbl,dst))| (dst,lbl))
                  .concat(&labels)
                  .group(|_dst, lbls, out| {
-                     let min_lbl =
-                     lbls.iter()
+                     let min_lbl = lbls.iter()
                          .map(|x| *x.0)
                          .min()
                          .unwrap();
