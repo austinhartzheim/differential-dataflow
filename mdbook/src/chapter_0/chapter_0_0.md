@@ -25,8 +25,8 @@ version = "0.1.0"
 authors = ["Your Name <your_name@you.ch>"]
 
 [dependencies]
-timely = "0.7"
-differential-dataflow = "0.7"
+timely = "0.8"
+differential-dataflow = "0.8"
 ```
 
 You should only need to add those last two lines there, which bring in dependencies on both [timely dataflow](https://github.com/frankmcsherry/timely-dataflow) and [differential dataflow](https://github.com/frankmcsherry/differential-dataflow). We will be using both of those.
