@@ -6,7 +6,7 @@ Let's write a program with one input: a collection `manages` of pairs `(manager,
 
 If you are following along at home, put this in your `src/main.rs` file.
 
-```rust,no_run
+```rust,ignore
     extern crate timely;
     extern crate differential_dataflow;
 
@@ -54,25 +54,28 @@ We want to report each pair `(m2, p)`, and we happen to also produce as evidence
 
 When we execute this program we get to see the skip-level reports for the small binary tree we loaded as input:
 
-        Echidnatron% cargo run --example hello
-           Compiling differential-dataflow v0.6.0 (file:///Users/mcsherry/Projects/differential-dataflow)
-            Finished dev [unoptimized + debuginfo] target(s) in 7.17s
-             Running `target/debug/examples/hello`
-        ((0, 0, 0), (Root, 0), 1)
-        ((0, 0, 1), (Root, 0), 1)
-        ((1, 0, 2), (Root, 0), 1)
-        ((1, 0, 3), (Root, 0), 1)
-        ((2, 1, 4), (Root, 0), 1)
-        ((2, 1, 5), (Root, 0), 1)
-        ((3, 1, 6), (Root, 0), 1)
-        ((3, 1, 7), (Root, 0), 1)
-        ((4, 2, 8), (Root, 0), 1)
-        ((4, 2, 9), (Root, 0), 1)
-        Echidnatron%
+```sh
+cargo run --example hello
+   Compiling differential-dataflow v0.6.0 (file:///Users/mcsherry/Projects/differential-dataflow)
+    Finished dev [unoptimized + debuginfo] target(s) in 7.17s
+     Running `target/debug/examples/hello`
+((0, 0, 0), (Root, 0), 1)
+((0, 0, 1), (Root, 0), 1)
+((1, 0, 2), (Root, 0), 1)
+((1, 0, 3), (Root, 0), 1)
+((2, 1, 4), (Root, 0), 1)
+((2, 1, 5), (Root, 0), 1)
+((3, 1, 6), (Root, 0), 1)
+((3, 1, 7), (Root, 0), 1)
+((4, 2, 8), (Root, 0), 1)
+((4, 2, 9), (Root, 0), 1)
+```
 
 This is a bit crazy, but what we are seeing is many triples of the form
 
+```rust,ignore
         (data, time, diff)
+```
 
 describing how the data have *changed*. That's right; our input is actually a *change* from the initially empty input. The output is showing us that at time `(Root, 0)` several tuples have had their frequency incremented by one. That is a fancy way of saying they are the output.
 
