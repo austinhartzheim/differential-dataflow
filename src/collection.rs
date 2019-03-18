@@ -204,7 +204,7 @@ impl<G: Scope, D: Data, R: Monoid> Collection<G, D, R> where G::Timestamp: Data 
     /// This method is most commonly used to take records containing aggregatable data (e.g. numbers to be summed)
     /// and move the data into the difference component. This will allow differential dataflow to update in-place.
     ///
-    /// #Examples
+    /// # Examples
     ///
     /// ```
     /// extern crate timely;

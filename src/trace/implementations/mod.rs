@@ -26,7 +26,7 @@
 //! benefits of each, as appropriate. There are several `Cursor` combiners, `CursorList` and `CursorPair`,
 //! for homogenous and inhomogenous cursors, respectively.
 //!
-//! #Musings
+//! # Musings
 //!
 //! What is less clear is how to transfer updates between the representations at merge time in a tasteful
 //! way. Perhaps we could put an ordering on the representations, each pair with a dominant representation,

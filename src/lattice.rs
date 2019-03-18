@@ -11,7 +11,7 @@ pub trait Lattice : PartialOrder {
 
     /// The smallest element of the type.
     ///
-    /// #Examples
+    /// # Examples
     ///
     /// ```
     /// use differential_dataflow::lattice::Lattice;
